@@ -153,5 +153,5 @@ class enby:
         # self.roboscape.listen(" ".join(robots))
         pass
 
-    def proxyConnect(self):
-        self.client.
+    # def proxyConnect(self):
+    #     self.client.

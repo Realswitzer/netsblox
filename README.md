@@ -6,6 +6,15 @@ part of this information is derived from the course materials, others from testi
 # How to use
 Easiest way to start is by copying the code below. This has the fundamentals, like making the Client and RoboScape, which are probably necessary if interacting with a RoboScape anyways.
 
+1. Install necessary packages
+```sh
+pip install netsblox
+# Optional depending on scripts/own usage
+pip install mido keyboard pygame_gui pygame
+# mido is for midis, keyboard, pygame, and pygame_gui are all useful for making a GUI.
+```
+
+2. Make client and start using `enby`
 ```py
 import eNBy, netsblox
 
