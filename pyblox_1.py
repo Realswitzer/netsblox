@@ -1,5 +1,5 @@
+# note: when i upgraded to python 3.13 everything broke.
 import netsblox
-import pygame_gui.ui_manager
 import eNBy
 import time
 import random
@@ -8,12 +8,6 @@ import typing
 import pygame
 import pygame_gui
 
-# client = netsblox.Client('hamburgler','f00d')
-# client.send_message('message', 'local', msg='a')
-# client.disconnect()
-# RoboScape = netsblox.RoboScape()
-# RoboScape.get_robots()
-# RoboScape.send()
 Client = netsblox.Client(project_name="hamburgler")
 RoboScape = netsblox.RoboScape(client=Client)
 print("Initialized RoboScape")
@@ -92,7 +86,7 @@ while is_running:
             if event.ui_element == BeepMineButton:
                 enby.this.beep(100, 300)
             if event.ui_element == ListenAllButton:
-                enby.listenAll()
+                enby.roboscape.listen(enby.roboscape.get_robots())
         manager.process_events(event)
     manager.update(time_delta)
     window_surface.blit(background, (0, 0))

@@ -2,3 +2,17 @@ midi/
 course_scripts/
 eNBy/__pycache__/
 .DS_Store
+
+.venv/
+.ipynb_checkpoints/
+
+# get rid of the many copies of pyblox
+eNBy/netsblox
+netsblox/
+nblib/
+
+# get rid of other junk
+_README_.rst
+
+# encryption does not work for now
+encryptBot.json

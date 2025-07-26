@@ -25,13 +25,13 @@ class this:
         self.enby = enby
 
     def beep(self, duration: int, frequency: int):
-        self.enby.beep(self.id, duration, frequency)
+        return self.enby.beep(self.id, duration, frequency)
 
     def setSpeed(self, left: int = None, right: int = None):
-        self.enby.setSpeed(self.id, left, right)
+        return self.enby.setSpeed(self.id, left, right)
 
     def stop(self):
-        self.enby.setSpeed(self.id, 0, 0)
+        return self.enby.setSpeed(self.id, 0, 0)
 
     def connected(self):
         return self.enby.connected(self.id)
@@ -64,7 +64,6 @@ class enby:
         self.this: this = this(self.roboscape_id, self)
         self.speedLeft: int = 0
         self.speedRight: int = 0
-        self.cachedRobots: List[str] = []
         self.encryptBot = {}
         self.key = ''
         self.music: music = music(self)
@@ -72,7 +71,7 @@ class enby:
         self.Proxy = None
 
     def beep(self, robot: str, duration: int, frequency: int) -> None:
-        self.roboscape.send(robot, f"{self.key} beep {duration} {frequency}".strip())
+        return self.roboscape.send(robot, f"beep {duration} {frequency}")
 
     def setSpeed(self, robot: str, left: int = None, right: int = None):
 
@@ -88,10 +87,10 @@ class enby:
         else:
             right = self.speedRight
 
-        self.roboscape.send(robot, f"{self.key} set speed {left} {right}".strip())
+        return self.roboscape.send(robot, f"set speed {left} {right}")
 
     def stop(self, robot: str):
-        self.setSpeed(robot, 0, 0)
+        return self.setSpeed(robot, 0, 0)
 
     def getRobots(self) -> List[str]:
         return (
@@ -104,9 +103,6 @@ class enby:
             if robot.endswith(self.roboscape_id):
                 robots.remove(robot)
         return robots
-
-    def getCached(self) -> List[str]:
-        return self.cachedRobots
 
     def connected(self, id: str) -> bool:
         robots = self.roboscape.get_robots()
@@ -152,6 +148,3 @@ class enby:
         # robots = self.getOthers()
         # self.roboscape.listen(" ".join(robots))
         pass
-
-    # def proxyConnect(self):
-    #     self.client.

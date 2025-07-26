@@ -1,9 +1,10 @@
+# View the other versions in the `demo.ipynb` notebook.
 import netsblox
 import time
 import eNBy
 import mido
 
-Client = netsblox.Client(project_name="hamburgler")
+Client = netsblox.Client()
 RoboScape = netsblox.RoboScape(client=Client)
 print("Initialized RoboScape")
 enby = eNBy.enby(Client, RoboScape, "37ac")
